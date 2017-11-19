@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>服务端渲染</title>
+	<!-- 导包，注意：客户端的src在服务端都是网络请求，这里需要服务端响应返回实际路径的文件 -->
+	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+	<!-- art-template既支持服务端模板引擎也支持客户端，如果是客户端则使用template-web.js -->
+	<script src="/node_modules/art-template/lib/template-web.js"></script>
+</head>
+
+<body>
+
+	<div id="div"></div>
+	<!-- 服务端渲染，模板不需要放到script标签中，因为我们返回给客户端的是一个已经经过渲染的html文本 -->
+		<p>名字: {{ name }}</p>
+		<p>年龄: {{ age }}</p>
+		爱好
+		{{ each hobby}}
+		<p> {{ $value }}</p>
+		{{ /each }}
+
+
+	<button id="last" onclick="window.location.href='/last'">上一页</button>
+	<button id="next" onclick="window.location.href='/next'">下一页</button>
+</body>
+
+
+</html>
