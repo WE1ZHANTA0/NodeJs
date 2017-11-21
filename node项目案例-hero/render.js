@@ -4,7 +4,7 @@ var template = require('art-template');
 
 var render = module.exports;
 
-render = function (res) {
+render.hander = function (res) {
   //这行代码的本质就是将一个匿名函数赋值给一个对象的属性
   res.render = function (tplName, jsonName) {
     var tplFileName = './views/' + tplName + '.html';
