@@ -39,9 +39,10 @@ controller.showIndex = function (req, res) {
         // 这里相当于动态的给数据中的对象添加一个时间的属性,该属性只用于模板引擎渲染显示
         item.localTime = moment(item.updatedAt.getTime()).startOf('second').fromNow();
       })
+      var user = req.session.user
       res.render('index.html',{
-        articles:docs //key=value key:模板语法中的占位对象
-
+        articles:docs, //key=value key:模板语法中的占位对象
+        user:user
       })
     })
 

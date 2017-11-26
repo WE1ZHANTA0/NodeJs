@@ -17,6 +17,6 @@ mongoose.connect('mongodb://127.0.0.1/hmClub');
  *  * 一个网站的首页其实就是将其他模块的数据显示在一起
  */
 module.exports = {
-  // User: userModel,
+  User: userModel,
   Article: articleModel
 };

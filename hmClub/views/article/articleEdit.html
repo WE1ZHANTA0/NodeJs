@@ -13,7 +13,8 @@
       <form id="form">
         <!-- 接收文章id和查看数但是不显示 -->
         <input type="hidden" id="article_id" name="id" value="{{  article.id }}">
-        <input type="hidden" id="article_id" name="visits" value="{{  article.visits }}">
+        <input type="hidden" id="visits_id" name="visits" value="{{  article.visits }}">
+        <input type="hidden" name="user_id" value="{{article.user_id}}">
         <div class="form-group">
           <label for="exampleInputEmail1">标题</label>
           <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="请输入文章标题" value="{{ article.title }}">
@@ -22,6 +23,7 @@
           <label for="exampleInputPassword1">内容</label>
           <textarea class="form-control" name="content" cols="30" rows="10">{{ article.content }}</textarea>
         </div>
+        {{}}
         <button type="submit" class="btn btn-default">编辑保存</button>
       </form>
     </div>
@@ -31,5 +33,29 @@
   <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 </body>
+
+
+<script>
+  $('#form').submit(function(e){
+    e.preventDefault();
+
+    $.ajax({
+      url : '/article/Edit',
+      type:'post',
+      dataType:'json',
+      data:$(this).serialize(),
+      success:function(data){
+        if(data.err_code === 0){
+          // 返回首页
+          window.location.href = '/';
+        }else{
+          window.alert(data.err_message);
+        }
+      }
+    })
+  })
+</script>
+
+
 
 </html>

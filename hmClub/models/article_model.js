@@ -11,6 +11,7 @@ var articleSchema = mongoose.Schema({
   content:{type:String,require:true},//文章内容，不能为空
   articleType:{type:String,default:'wenda'},//文章类型，默认为问答
   visits:{type:Number,default:0},//文章阅读数，默认为0
+  user_id:{type:String,require:true}//user的id 
 },{timestamps:true});//mongoose自动管理时间  updateAt  createAt
 
 // 3.导出

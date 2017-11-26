@@ -8,6 +8,7 @@ var path = require('path');
 var fs = require('fs');
 
 
+
 // 创建服务器
 var app = express();
 
@@ -41,13 +42,20 @@ var favicon = require('serve-favicon');
 // 参数就是网站图标的文件路劲
 app.use(favicon(path.join(__dirname,'public','img','hmclub.ico')));
 
+// 4.3挂载cookie中间件
+var cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name:'session_id',
+  keys:['Cookie','Options'],//cookieSession默认会对cookie做加密，这里的key就是加密的密钥
+  maxAge:24 * 60 * 60 * 1000 // 24 hours  //cookie有效期
+}))
 
 // 5.路由分发
 
 // app.use(路由容器)
 app.use(require('./router/index_router.js'));
 app.use(require('./router/article_router.js'));
-// app.use(require('./router/user_router.js'));
+app.use(require('./router/user_router.js'));
 
 // 快速测试服务器
 // app.get('/',function(req,res){

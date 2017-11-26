@@ -17,7 +17,10 @@
           {{ article.content }}
             <hr>
             <p>
+              <!-- 只有用户登陆，并且当前文章的user_id与用户的id一致才可以编辑 -->
+              {{if(user && user._id === article.user_id)}}
                 <a href="/article/edit?id={{ article.id }}">编辑</a>
+              {{/if}}
             </p>
         </div>
       </div>

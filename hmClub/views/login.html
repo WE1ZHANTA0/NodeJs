@@ -25,6 +25,23 @@
     </form>
   </div>
 </body>
-
+<script>
+  $('#form').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      url:'/login',
+      type:'post',
+      dataType:'json',
+      data:$(this).serialize(),
+      success:function(data){
+        if(data.err_code === 1000){
+          window.location.href = '/';
+        }else{
+          window.alert(data.err_message);
+        }
+      }
+    })
+  })
+</script>
 </html>
   

@@ -28,5 +28,22 @@
   </div>
   
 </body>
-
+<script>
+  $('#form').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      url:'/register',
+      type:'post',
+      dataType:'json',
+      data:$(this).serialize(),
+      success:function(data){
+        if(data.err_code===2000){
+          window.location.href = '/login';
+        }else{
+          window.alert(data.err_message);
+        }
+      }
+    })
+  })
+</script>
 </html>
