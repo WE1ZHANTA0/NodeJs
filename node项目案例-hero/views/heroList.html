@@ -43,9 +43,9 @@
                     <td>{{ $value.gender }}</td>
                     <td><img src="{{ $value.icon }}"></td>
                     <td>
-                        <a href="">查看</a>
-                        <a href="">编辑</a>
-                        <a href="">删除</a>
+                        <a href="./heroInfo?id={{$value.id}}">查看</a>
+                        <a href="./heroEdit?id={{$value.id}}">编辑</a>
+                        <a href="javascript:;">删除</a>
                     </td>
                 </tr>
                 {{ /each }}
